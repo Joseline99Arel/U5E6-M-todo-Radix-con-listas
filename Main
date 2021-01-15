@@ -1,0 +1,71 @@
+package Joseline_Arel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main 
+{
+    public static void main (String []args){
+        
+    Scanner entrada = new Scanner (System.in);
+    
+    List<Integer> lista = new ArrayList<Integer>();
+    
+    int a=1,Respuesta=0, Numero, Act;
+    
+    while(a==1){
+        System.out.println("Elije una Opcion");
+        System.out.println("1.- Insertar");
+        System.out.println("2.- Mostrar");
+        System.out.println("3.- Salir");
+        Respuesta=entrada.nextInt();
+            
+        if(Respuesta>0 && Respuesta<4){
+            switch(Respuesta){
+                case 1: 
+                    System.out.println("Introduzca un numero");
+                    Numero=entrada.nextInt();
+                    lista.add(Numero);
+                break;
+                case 2: 
+                    int x, i, j;
+                    for (x=Integer.SIZE-1; x >= 0; x--){
+                        List<Integer> num = new ArrayList<Integer>();
+                        for(int b=0; b<lista.size();b++){
+                            num.add(0);
+                        }
+                        j=0;
+                        for (i = 0; i<lista.size(); i++){
+                            boolean mover = lista.get(i) << x >=0;
+                            if (x==0 ? !mover:mover){
+                                num.set(j, lista.get(i));
+                                j++;
+                            }
+                            else{
+                                lista.set(i-j, lista.get(i));
+                            }
+                        }
+                        for(i=j; i<num.size(); i++){
+                            num.set(i, lista.get(i-j));
+                        }
+                        lista=num;
+                    }
+                
+                    System.out.println("La lista ordenada quedaria de la siguiente manera: ");
+                    System.out.println(lista);
+                break;
+                case 3: 
+                System.exit(0);
+                break;
+            }
+            System.out.println("Quieres repetir el proceso 1:Si 2:No");
+            a=entrada.nextInt();
+            }
+            else
+            {
+                System.out.println("El numero que ingresaste esta fuera de las opciones ");
+            }
+        }     
+    }
+}
